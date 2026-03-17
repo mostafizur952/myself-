@@ -24,9 +24,6 @@ jobs:
           node-version: '22.x'
           cache: 'npm'
 
-      - name: Check Node.js version
-        run: node -v
-
       - name: Install dependencies
         run: npm install --force
 
@@ -39,10 +36,10 @@ jobs:
           npx cap copy android
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.12'
-          validate-wrappers: false
+        run: |
+          wget https://services.gradle.org/distributions/gradle-8.12-bin.zip
+          sudo unzip -d /opt/gradle gradle-8.12-bin.zip
+          echo "/opt/gradle/gradle-8.12/bin" >> $GITHUB_PATH
 
       - name: Build with Gradle
         run: |
