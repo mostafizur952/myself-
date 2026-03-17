@@ -1,0 +1,9 @@
+{
+  "name": "Fast YT Downloader",
+  "description": "A modern mobile-first YouTube downloader with a gold coin rewards system and referral program.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
