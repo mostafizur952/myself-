@@ -24,6 +24,9 @@ jobs:
           node-version: '22.x'
           cache: 'npm'
 
+      - name: Remove problematic wrapper
+        run: rm -f android/gradle/wrapper/gradle-wrapper.jar
+
       - name: Install dependencies
         run: npm install --force
 
@@ -37,8 +40,8 @@ jobs:
 
       - name: Setup Gradle
         run: |
-          wget https://services.gradle.org/distributions/gradle-8.12-bin.zip
-          sudo unzip -d /opt/gradle gradle-8.12-bin.zip
+          wget -q https://services.gradle.org/distributions/gradle-8.12-bin.zip
+          sudo unzip -q -d /opt/gradle gradle-8.12-bin.zip
           echo "/opt/gradle/gradle-8.12/bin" >> $GITHUB_PATH
 
       - name: Build with Gradle
