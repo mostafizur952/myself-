@@ -36,16 +36,13 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: 8.10.2 # একটি স্টেবল ভার্সন ব্যবহার করছি
+          gradle-version: 8.14.3
           validate-wrappers: false
-
-      - name: Accept Android Licenses
-        run: yes | sdkmanager --licenses || true
 
       - name: Build with Gradle
         run: |
           cd android
-          gradle assembleDebug --stacktrace --no-daemon
+          gradle assembleDebug --stacktrace --info
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
